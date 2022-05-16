@@ -14,7 +14,7 @@ class View
   # class variable 'views_array'
   def self.load(file_path)
     File.open(file_path).each do |line|
-      @@views_array << View.new(line.split(' ')[0], line.split(' ')[1])
+      @@views_array << View.new(line.split(' ')[0], line.split(' ')[1]) unless line.gsub("\n", '').length.zero?
     end
   end
 
@@ -33,4 +33,8 @@ class View
     total_views(views_array).each { |view| hash[view[0]] = view[1].uniq }
     hash.sort_by { |_k, v| -v.count }
   end
+
+  def self.display_visits(array)
+    array.each { |page| puts "#{page[0]} #{page[1].count} visits" }
+  end 
 end

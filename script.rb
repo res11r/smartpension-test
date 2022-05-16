@@ -1,7 +1,16 @@
 require 'pry-byebug'
 require_relative 'view'
+
 View.load(ARGV[0])
 puts 'total visits:'
-View.total_views.each { |page| puts "#{page[0]} #{page[1].count} visits" }
+if View.total_views.length.zero? 
+  puts "None"
+else 
+  View.display_visits(View.total_views)
+end
 puts 'unique visits:'
-View.unique_views.each { |page| puts "#{page[0]} #{page[1].count} visits" }
+if View.total_views.length.zero?
+  puts "None"
+else
+  View.display_visits(View.unique_views)
+end 
