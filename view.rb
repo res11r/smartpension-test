@@ -34,6 +34,8 @@ class View
     hash.sort_by { |_k, v| -v.count }
   end
 
+  # The following method takes one argument (a views array), doesn't return anything, prints each path with the corresponding number of
+  # visits
   def self.display_visits(array)
     array.each { |page| puts "#{page[0]} #{page[1].count} visits" }
   end 
